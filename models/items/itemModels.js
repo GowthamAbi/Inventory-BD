@@ -1,40 +1,70 @@
-const mangoose=require('mongoose')
+const mongoose = require("mongoose");
 
-const itemSchema=new mongoose.Schema({
-    goods:{type:String},
+const itemSchema = new mongoose.Schema(
+  {
+    type: {
+      type: String,
+      enum: ["GOODS", "SERVICE"],
+     
+    },
 
-    name:{type:String,require:true},
-    sku:{type:Number},
-    unit:{type:String},
+    name: {
+      type: String,
 
-    hight:{type:Number},
-    length:{type:Number},
-    width:{type:Number},
+      trim: true,
+    },
 
-    manufacture:{type:String},
-    upc:{type:String},
-    ian:{type:String},
+    sku: String,
 
-    weight:{type:String},
-    weightunit:{type:String},
-    brand:{type:String},
-    mpn:{type:String},    
-    isbn:{type:String},
-    
-    sellingprice:{type:Number},
-    account:{type:Number},
-    description:{type:String},
+    unit: String,
 
-    costprice:{type:Number},
-    account:{type:Number},
-    description:{type:String},   
-    vendor:{type:String},   
+    returnable: {
+      type: Boolean,
+      default: false,
+    },
 
-   opningstock:{type:Number},
-    account:{type:Number},
-    opningstockunit:{type:Number},
+    dimensions: {
+      length: Number,
+      width: Number,
+      height: Number,
+      unit: String, // cm / in
+    },
 
-})
+    weight: {
+      value: Number,
+      unit: String, // kg / g / lb / oz
+    },
 
+    manufacturer: String,
+    brand: String,
 
-module.exports=mangoose.model("Item","itemSchema")
+    upc: String,
+    ean: String,
+    mpn: String,
+    isbn: String,
+
+    salesInfo: {
+      enabled: Boolean,
+      price: Number,
+      account: String,
+      description: String,
+    },
+
+    purchaseInfo: {
+      enabled: Boolean,
+      costPrice: Number,
+      account: String,
+      description: String,
+      preferredVendor: String,
+    },
+
+    inventory: {
+      trackInventory: Boolean,
+      inventoryAccount: String,
+      openingStock: Number,
+    },
+  },
+  { timestamps: true }
+);
+
+module.exports = mongoose.model("Item", itemSchema);

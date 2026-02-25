@@ -1,15 +1,27 @@
+const { default: mongoose } = require("mongoose")
+const itemModels = require("../../models/items/itemModels")
+
 const itemController={
-    item:(req,res)=>{
+    addItem:async(req,res)=>{
 
     try {
-            res.status(200).json("Your Enter in itemController")
+        const item=await itemModels.create(req.body)
 
-        console.log("Your Enter in itemController")
+        console.log(req.body)
+           res.status(201).json({
+      success: true,
+      message: "Item created successfully",
+      data: item,
+    });
     
     } catch (error) {
         console.log("Error in ItemController ",error)
     }
-}}
+},
+
+
+
+}
 
 
 module.exports=itemController
