@@ -1,6 +1,12 @@
 const express=require('express')
-const itemRoute = require('./routes/items/itemRouter')
 const app=express()
+const dotenv=require('dotenv')
+const connectDB=require('./connectDB/connectDB')
+const itemRoute = require('./routes/items/itemRouter')
+
+dotenv.config()
+
+connectDB().catch((error)=>{console.log("Error in MangoDB Connecting in Server page",error)})
 
 app.use("/",itemRoute)
 
