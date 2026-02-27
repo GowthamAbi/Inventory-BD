@@ -10,7 +10,8 @@ dotenv.config()
 connectDB()
 app.use(express.json());
 
-app.use("/",itemRoute)
+app.use("/item",itemRoute)
+app.use("/po",)
 
 
 app.listen(3000,(req,res)=>(

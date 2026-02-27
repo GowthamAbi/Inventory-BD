@@ -4,3 +4,5 @@ const route=express.Router();
 
 route.get('/',vendor.create)
 route.post('/',vendor.list)
+
+module.exports=route

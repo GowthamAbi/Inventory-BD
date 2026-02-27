@@ -4,3 +4,5 @@ const route=express.Router();
 
 route.get('/',customer.create)
 route.post('/',customer.list)
+
+module.exports=route
