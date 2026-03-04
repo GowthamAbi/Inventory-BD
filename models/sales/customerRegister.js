@@ -2,6 +2,10 @@ const  mongoose  = require("mongoose")
 
 const customerSchema=new mongoose.Schema(
     {
+        customertype:{
+            business:String,
+            individual:String
+        },
         primaryContact:{
             salution:String,
             firstName:String,
@@ -10,6 +14,8 @@ const customerSchema=new mongoose.Schema(
         companyName:String,
         displayName:String,
         email:String,
+        panCard:String,
+        aadharCard:String,
         phoneNumber:{
             phone:Number,
             office:Number
@@ -40,7 +46,7 @@ const customerSchema=new mongoose.Schema(
 
         bank:{
             name:String,
-            bank:String,
+            bankName:String,
             ifsc:String,
             account:Number
         },
